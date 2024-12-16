@@ -1,11 +1,11 @@
+import { Heart, Star, StarHalfIcon } from "lucide-react";
 import { useState } from "react";
-import { Heart, Star, StarHalf } from "lucide-react";
-import { ProductImages } from "./components/ProductImages";
-import { ColorSelector } from "./components/ColorSelector";
-import { SizeSelector } from "./components/SizeSelector";
 import { CartModal } from "./components/CartModal";
+import { ColorSelector } from "./components/ColorSelector";
 import { FloatingCart } from "./components/FloatingCart";
-import type { BandColor, WristSize, CartItem } from "./types";
+import { ProductImages } from "./components/ProductImages";
+import { SizeSelector } from "./components/SizeSelector";
+import type { BandColor, CartItem, WristSize } from "./types";
 
 const images = {
   purple: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500",
@@ -59,16 +59,18 @@ function App() {
                   <Star className="w-5 h-5 fill-current" />
                   <Star className="w-5 h-5 fill-current" />
                   <Star className="w-5 h-5 fill-current" />
-                  <Star className="w-5 h-5 fill-current" />
-                  <StarHalf className="w-5 h-5" />
+                  <StarHalfIcon className="w-5 h-5 fill-current" />
+                  <Star className="w-5 h-5 " />
                 </div>
                 <span className="text-gray-500">(2 Reviews)</span>
               </div>
             </div>
 
-            <div className="flex items-baseline gap-4">
-              <span className="text-3xl font-bold text-gray-900">$79.00</span>
-              <span className="text-lg text-gray-500 line-through">$99.00</span>
+            <div className="flex items-center gap-1">
+              <span className="text-xl text-[#8091A7] line-through">
+                $99.00
+              </span>
+              <span className="text-2xl font-bold text-primary">$79.00</span>
             </div>
 
             <p className="text-gray-600">
