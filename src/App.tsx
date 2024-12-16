@@ -1,22 +1,23 @@
-import { useState } from 'react';
-import { Heart, Star, StarHalf } from 'lucide-react';
-import { ProductImages } from './components/ProductImages';
-import { ColorSelector } from './components/ColorSelector';
-import { SizeSelector } from './components/SizeSelector';
-import { CartModal } from './components/CartModal';
-import { FloatingCart } from './components/FloatingCart';
-import type { BandColor, WristSize, CartItem } from './types';
+import { useState } from "react";
+import { Heart, Star, StarHalf } from "lucide-react";
+import { ProductImages } from "./components/ProductImages";
+import { ColorSelector } from "./components/ColorSelector";
+import { SizeSelector } from "./components/SizeSelector";
+import { CartModal } from "./components/CartModal";
+import { FloatingCart } from "./components/FloatingCart";
+import type { BandColor, WristSize, CartItem } from "./types";
 
 const images = {
-  purple: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500',
-  turquoise: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500',
-  blue: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500',
-  black: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500'
+  purple: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500",
+  turquoise:
+    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
+  blue: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
+  black: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
 };
 
 function App() {
-  const [selectedColor, setSelectedColor] = useState<BandColor>('purple');
-  const [selectedSize, setSelectedSize] = useState<WristSize>('M');
+  const [selectedColor, setSelectedColor] = useState<BandColor>("purple");
+  const [selectedSize, setSelectedSize] = useState<WristSize>("M");
   const [quantity, setQuantity] = useState(1);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -24,12 +25,12 @@ function App() {
   const addToCart = () => {
     const newItem: CartItem = {
       id: `${Date.now()}`,
-      name: 'Classy Modern Smart watch',
+      name: "Classy Modern Smart watch",
       color: selectedColor,
       size: selectedSize,
       quantity,
       price: 79,
-      image: images[selectedColor]
+      image: images[selectedColor],
     };
 
     setCartItems((prev) => [...prev, newItem]);
@@ -44,11 +45,15 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 gap-8">
-          <ProductImages selectedColor={selectedColor} />
+          <div className="h-[360px] md:h-[500px] lg:h-[720px]">
+            <ProductImages selectedColor={selectedColor} />
+          </div>
 
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Classy Modern Smart watch</h1>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Classy Modern Smart watch
+              </h1>
               <div className="flex items-center gap-2 mt-2">
                 <div className="flex text-yellow-400">
                   <Star className="w-5 h-5 fill-current" />
@@ -67,20 +72,26 @@ function App() {
             </div>
 
             <p className="text-gray-600">
-              I must explain to you how all this mistaken idea of denoun cing ple praising pain was
-              born and I will give you a complete account of the system, and expound the actual
-              teaching.
+              I must explain to you how all this mistaken idea of denoun cing
+              ple praising pain was born and I will give you a complete account
+              of the system, and expound the actual teaching.
             </p>
 
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-medium mb-2">Band Color</h3>
-                <ColorSelector selectedColor={selectedColor} onColorSelect={setSelectedColor} />
+                <ColorSelector
+                  selectedColor={selectedColor}
+                  onColorSelect={setSelectedColor}
+                />
               </div>
 
               <div>
                 <h3 className="text-lg font-medium mb-2">Wrist Size</h3>
-                <SizeSelector selectedSize={selectedSize} onSizeSelect={setSelectedSize} />
+                <SizeSelector
+                  selectedSize={selectedSize}
+                  onSizeSelect={setSelectedSize}
+                />
               </div>
 
               <div className="flex items-center gap-4">
@@ -116,7 +127,10 @@ function App() {
         </div>
       </div>
 
-      <FloatingCart itemCount={cartItems.length} onClick={() => setIsCartOpen(true)} />
+      <FloatingCart
+        itemCount={cartItems.length}
+        onClick={() => setIsCartOpen(true)}
+      />
       <CartModal
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}

@@ -8,18 +8,18 @@ const images = {
   black: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
 };
 
-interface ProductImagesProps {
+export const ProductImages = ({
+  selectedColor,
+}: {
   selectedColor: BandColor;
-}
-
-export function ProductImages({ selectedColor }: ProductImagesProps) {
+}) => {
   return (
-    <div className="w-full max-w-xl">
+    <div className="w-full h-full rounded-lg overflow-hidden">
       <img
         src={images[selectedColor]}
-        alt={`Smart watch in ${selectedColor}`}
-        className="w-full rounded-lg shadow-lg"
+        alt={`Watch with ${selectedColor} band`}
+        className="w-full h-full object-cover"
       />
     </div>
   );
-}
+};
