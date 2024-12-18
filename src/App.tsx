@@ -126,8 +126,8 @@ function App() {
                   Add to Cart
                 </button>
 
-                <button className="p-3 border rounded-lg hover:bg-gray-50">
-                  <Heart className="w-6 h-6" />
+                <button className="p-3 ">
+                  <Heart className="w-6 h-6 text-blue-500 hover:text-red-600 hover:fill-red-600" />
                 </button>
               </div>
             </div>
