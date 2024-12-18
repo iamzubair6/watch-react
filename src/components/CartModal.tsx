@@ -1,5 +1,5 @@
-import { ShoppingCart, X } from 'lucide-react';
-import type { CartItem } from '../types';
+import { ShoppingCart, X } from "lucide-react";
+import type { CartItem } from "../types";
 
 interface CartModalProps {
   isOpen: boolean;
@@ -8,17 +8,28 @@ interface CartModalProps {
   onRemoveItem: (id: string) => void;
 }
 
-export function CartModal({ isOpen, onClose, items, onRemoveItem }: CartModalProps) {
+export function CartModal({
+  isOpen,
+  onClose,
+  items,
+  onRemoveItem,
+}: CartModalProps) {
   if (!isOpen) return null;
 
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Your Cart</h2>
-          <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-full"
+          >
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -32,8 +43,15 @@ export function CartModal({ isOpen, onClose, items, onRemoveItem }: CartModalPro
           <>
             <div className="space-y-4">
               {items.map((item) => (
-                <div key={item.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                  <img src={item.image} alt={item.name} className="w-16 h-16 rounded object-cover" />
+                <div
+                  key={item.id}
+                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-16 h-16 rounded object-cover"
+                  />
                   <div className="flex-1">
                     <h3 className="font-semibold">{item.name}</h3>
                     <p className="text-sm text-gray-600">
@@ -42,7 +60,9 @@ export function CartModal({ isOpen, onClose, items, onRemoveItem }: CartModalPro
                   </div>
                   <div className="text-right">
                     <p className="font-semibold">${item.price}</p>
-                    <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
+                    <p className="text-sm text-gray-600">
+                      Qty: {item.quantity}
+                    </p>
                   </div>
                   <button
                     onClick={() => onRemoveItem(item.id)}

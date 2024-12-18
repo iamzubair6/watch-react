@@ -1,6 +1,6 @@
 import { Heart, Star, StarHalfIcon } from "lucide-react";
 import { useState } from "react";
-import { CartModal } from "./components/CartModal";
+import { CartModal } from "./components/cart/CartModal";
 import { ColorSelector } from "./components/ColorSelector";
 import { FloatingCart } from "./components/FloatingCart";
 import { ProductImages } from "./components/ProductImages";
@@ -17,7 +17,11 @@ const images = {
 
 function App() {
   const [selectedColor, setSelectedColor] = useState<BandColor>("purple");
-  const [selectedSize, setSelectedSize] = useState<WristSize>("M");
+  const [selectedSize, setSelectedSize] = useState<WristSize>({
+    size: "M",
+    price: 79,
+  });
+  console.log("🚀 ~ App ~ selectedSize:", selectedSize);
   const [quantity, setQuantity] = useState(1);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -27,9 +31,9 @@ function App() {
       id: `${Date.now()}`,
       name: "Classy Modern Smart watch",
       color: selectedColor,
-      size: selectedSize,
+      size: selectedSize?.size,
       quantity,
-      price: 79,
+      price: selectedSize?.price,
       image: images[selectedColor],
     };
 
@@ -70,7 +74,9 @@ function App() {
               <span className="text-xl text-[#8091A7] line-through">
                 $99.00
               </span>
-              <span className="text-2xl font-bold text-primary">$79.00</span>
+              <span className="text-2xl font-bold text-primary">
+                ${selectedSize?.price}
+              </span>
             </div>
 
             <p className="text-gray-600">

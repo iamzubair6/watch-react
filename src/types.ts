@@ -18,5 +18,5 @@ export interface CartItem {
   image: string;
 }
 
-export type BandColor = 'purple' | 'turquoise' | 'blue' | 'black';
-export type WristSize = 'S' | 'M' | 'L' | 'XL';
+export type BandColor = "purple" | "turquoise" | "blue" | "black";
+export type WristSize = { size: "S" | "M" | "L" | "XL"; price: number };

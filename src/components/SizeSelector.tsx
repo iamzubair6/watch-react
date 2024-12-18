@@ -5,7 +5,7 @@ interface SizeSelectorProps {
   onSizeSelect: (size: WristSize) => void;
 }
 
-const sizes: { size: WristSize; price: number }[] = [
+const sizes: WristSize[] = [
   { size: "S", price: 69 },
   { size: "M", price: 79 },
   { size: "L", price: 89 },
@@ -21,9 +21,9 @@ export function SizeSelector({
       {sizes.map(({ size, price }) => (
         <button
           key={size}
-          onClick={() => onSizeSelect(size)}
+          onClick={() => onSizeSelect({ size, price })}
           className={`px-4 py-2 rounded-md  border border-[#DBDFEA] text-sm font-bold ${
-            selectedSize === size ? " text-primary " : ""
+            selectedSize.size === size ? " text-primary " : ""
           }`}
         >
           {size}
