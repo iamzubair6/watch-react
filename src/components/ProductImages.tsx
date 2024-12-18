@@ -1,11 +1,14 @@
+import blackImage from "../assets/black.png";
+import blueImage from "../assets/blue.png";
+import turquoiseImage from "../assets/cyan.png";
+import purpleImage from "../assets/lg-a 3.png";
 import type { BandColor } from "../types";
 
 const images = {
-  purple: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500",
-  turquoise:
-    "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500",
-  blue: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500",
-  black: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500",
+  purple: purpleImage,
+  turquoise: turquoiseImage,
+  blue: blueImage,
+  black: blackImage,
 };
 
 export const ProductImages = ({
